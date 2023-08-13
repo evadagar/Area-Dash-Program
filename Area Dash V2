@@ -1,0 +1,89 @@
+#Area Dash 
+from tkinter import *
+import math
+import random
+import time
+
+
+class start_window:
+
+    def __init__(self):
+    
+        head_label = Label(root, text = "AREA DASH")
+        head_label.pack()
+        
+        shape_options = ["Circle", "Rectangle"]
+
+        subhead_label1 = Label(root, text = "Choose Shape and Time Limit below").pack()
+        
+        subhead_label2 = Label(root, text = "Shapes:").pack()
+        shape_selection = StringVar() #defining variable
+        shape_selection.set(shape_options[0]) #setting default value for the drop down menu
+        drop = OptionMenu(root, shape_selection, *shape_options)
+        drop.pack()
+        
+        subhead_label3 = Label(root, text = "Time Limit:").pack()
+        
+        tl = IntVar()
+        
+        Radiobutton(root, text = "5", variable = tl, value = 5).pack()
+        Radiobutton(root, text = "10", variable = tl, value = 10).pack()
+        Radiobutton(root, text = "15", variable = tl, value = 15).pack()
+        
+            
+        mybutton = Button(root, text="START", padx = 40, pady = 10, command = self.main_window())
+        mybutton.pack()
+
+    def main_window(self):
+        def circle_questions(self):
+            radius = random.randint(1,20)
+            radius_display = StringVar()
+            c_formula = Label(root, text = "Area of a CIRCLE Formula : π x Radius^2 (Use π = 3.14)").pack()
+            c_area_question = Label(root, text = "Radius = {}cm".format(radius)).pack()
+            c_area_instruction = Label(root, text = "Enter your answer in cm^2 below").pack()
+            enter_answer = Entry(root, width = 400, bg = #A3A3A3, borderwidth = 20)
+            submit_button = Button(root, text = "SUBMIT", padx = 40, pady = 10, command = )
+            circle_area = int(enter_answer.get().strip())
+            if circle_area == 3.14 * radius * radius:
+                correct_answer = Label(root, text = "Your answer is correct!").pack()
+                circle_questions()
+            else:
+                wrong_answer = Label(root, text = "Wrong Answer! Try again!").pack()
+                circle_questions()
+                
+        def rectangle_questions(self):
+            base = random.randint(1,20)
+            height = random.randint(1,20)
+            base_display = StringVar()
+            height_display = StringVar()
+            r_formula = Label(root, text = "Area of a Rectagle Formula : Base x Height").pack()
+            r_area_question = Label(root, text = "Base = {}cm, Height = {}".format(base, height)).pack()
+            r_area_instruction = Label(root, text = "Enter your answer in cm^2 below").pack()
+            enter_answer = Entry(root, width = 400, bg = #A3A3A3, borderwidth = 20)
+            rectangle_area = enter_answer.get()
+            if rectangle_area == base * height:
+            correct_answer = Label(root, text = "Your answer is correct!").pack()
+                rectangle_questions()
+            else:
+                wrong_answer = Label(root, text = "Wrong Answer! Try again!").pack()
+                rectangle_questions()  
+            
+        if shape_selection == shape_options[0]:
+            circle_questions()
+        else: 
+            rectangle_questions()
+            
+    def exit_window(self):
+        time_end = Label(root, text = "Your timer has ended! See results below:").pack()
+        
+        resart_button = Button(root, text = "RESTART", padx = 50, pady = 20, command = start_window())
+        
+            
+            
+
+root = Tk()
+root.title("Area Dash")
+root.geometry("1000x1500")
+start_window()
+
+root.mainloop()
