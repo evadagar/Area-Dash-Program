@@ -1,0 +1,37 @@
+#Area Dash 
+from tkinter import *
+
+shape_options = ["Circle", "Triangle", "Rectangle"]
+
+root = Tk()
+root.title("Area Dash")
+root.geometry("650x250")
+head_label = Label(root, text = "AREA DASH")
+head_label.pack()
+
+subhead_label1 = Label(root, text = "Instructions:").pack()
+
+body_label = Label(root, text = "This game will help you test your Area Calculation skills. Below, select which shape you want to test and the time limit in which you must answer as many questions as you can.").pack()
+
+subhead_label2 = Label(root, text = "Shapes:").pack()
+shape_selection = StringVar() #defining variable
+shape_selection.set(shape_options[0]) #setting default value for the drop down menu
+drop = OptionMenu(root, shape_selection, *shape_options)
+drop.pack()
+
+subhead_label3 = Label(root, text = "Time Limit:").pack()
+
+tl = IntVar()
+
+Radiobutton(root, text = "5", variable = tl, value = 5).pack()
+Radiobutton(root, text = "10", variable = tl, value = 10).pack()
+Radiobutton(root, text = "15", variable = tl, value = 15).pack()
+
+def myClick():
+    mylabel = Label(root, text = "I clicked the button!")
+    mylabel.pack()
+    
+mybutton = Button(root, text="START", padx = 40, pady = 10, command = myClick)
+mybutton.pack()
+
+root.mainloop()
